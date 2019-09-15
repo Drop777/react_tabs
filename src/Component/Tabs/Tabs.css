@@ -1,0 +1,19 @@
+.nav-item {
+  border: none;
+  background-color: #fff;
+}
+
+.active {
+  border: 1px solid black;
+  border-bottom-color: transparent;
+  outline: none;
+}
+
+.content {
+  margin: 0;
+  border-top: 1px solid black;
+  position: relative;
+  top: -1px;
+  z-index: -1;
+  background-color: #fff;
+}
