@@ -1,11 +1,14 @@
 import React from 'react';
 import './Tabs.css';
 import PropTypes from 'prop-types';
+import classNames from 'classname';
 
 const Tabs = ({ tabs, currentTabIndex, selectTab }) => {
-  const className = i => (i === currentTabIndex
-    ? 'nav-item active'
-    : 'nav-item'
+  const className = i => (
+    classNames({
+      'nav-item': true,
+      active: i === currentTabIndex,
+    })
   );
 
   return (
@@ -15,7 +18,7 @@ const Tabs = ({ tabs, currentTabIndex, selectTab }) => {
           <button
             type="button"
             className={className(i)}
-            key={i}
+            key={tab.title}
             onClick={() => selectTab(i)}
           >
             {tab.title}
@@ -28,7 +31,10 @@ const Tabs = ({ tabs, currentTabIndex, selectTab }) => {
 };
 
 Tabs.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.object),
+  tabs: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    content: PropTypes.string,
+  })),
   currentTabIndex: PropTypes.number,
   selectTab: PropTypes.func,
 }.isRequired;
